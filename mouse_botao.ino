@@ -1,4 +1,3 @@
-main main
 #include <Mouse.h>
 
 
