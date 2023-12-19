@@ -3,50 +3,42 @@
 
 /*
   ButtonMouseControl
+  Para placas de arduino micro, Leonardo, Pro Micro and Due boards only.
+  Controla o mouse a partir de bot?es.
 
-  Para placas de arduino micro, Leonardo and Due boards only.
-
-  Controla o mouse a partir de cinco botões.
-
-  Hardware:
-  - cinco botões de pressão conectados a D2, D3, D4, D5, D6
-
-  O movimento do mouse é sempre relativo. Este Sketch lê quatro botões,
-  e os usa para definir o movimento do mouse.
-
-  AVISO: Quando você usa o comando Mouse.move (), o Arduino assume o controle do movimento do mouse!
-
-  criado em 15 de março de 2012
-  modificado 27 mar 2012
-  por Tom Igoe
-
-  Este código de exemplo está no domínio público.
+  O movimento do mouse é sempre relativo. 
+  
+  Código de exemplo criado originalmente em 15 de mar?o de 2012, por Tom Igoe
   http://www.arduino.cc/en/Tutorial/ButtonMouseControl
+
+  A implementação das demais funções e adequações foi realizada por bolsistas do projeto CRTA.
+  Mais informações estão disponíveis em: https://cta.ifrs.edu.br/
 */
 
 
 
 #define DEBOUNCING 50     //tempo(millisegundos) para o DEBOUNCING
-#define TEMPO 800         //tempo para fazer a funcao de acelerar o mouse(valor em milissegundos)
-#define MULTIPLI 0.02     //Variar entre 0.001 e 0.08 para acelerar o avanco do mouse apos 800 milissegundos segurados
-#define MULTIPLICA 8      //Velocidade maxima que o mouse tera no maximo do joystick(0-1023)
+#define TEMPO 200         //tempo para fazer a funcao de acelerar o mouse(valor em milissegundos)
+#define MULTIPLI 0.3     //Variar entre 0.001 e 0.08 para acelerar o avanco do mouse apos 800 milissegundos segurados
+#define MULTIPLICA 1023      //Velocidade maxima que o mouse tera no maximo do joystick(0-1023)
 
-//dizendo ao programa o numero dos pinos conectados aos botões
-const int analogico1 = A0;
-const int analogico2 = A1;
+//dizendo ao programa o numero dos pinos conectados aos bot?es
+//const int analogico1 = A0; As portas analógicas somente serão utilizadas em conjunto com o módulo analógico
+//const int analogico2 = A1;
+
 const int StickButton = 10;
 
-const int upButton = 3;
-const int downButton = 2;
-const int leftButton = 4;
-const int rightButton = 5;
+const int upButton = 2;
+const int downButton = 3;
+const int leftButton = 5;
+const int rightButton = 4;
 
 const int mouseButton = 6;
 const int rightmouseButton = 7;
 const int leftLong = 8;
 const int doubleleft = 9;
 
-int range = 3;              // multiplicador do movimento do mouse em X e Y, quanto maior o numero mais rapido fica o mouse
+int range = 1;              // multiplicador do movimento do mouse em X e Y, quanto maior o numero mais rapido fica o mouse
 int responseDelay = 10;     // tempo de resposta do mouse(quanto maior o numero mais lento o mouse fica),numero em milisegundos
 boolean variavel = 0, variavel2 = 1, variavel3 = 1, variavel4 = 1, variavel5 = 1;
 int d = 0, a = 0;
@@ -68,7 +60,7 @@ void setup() {
 }
 
 void loop() {
-  // Este loop é infinito,e em cada vez que o loop reinicia é feito a leitura dos botões
+  // Este loop ? infinito,e em cada vez que o loop reinicia ? feito a leitura dos bot?es
   int  xDistance = 0;
   int  yDistance = 0;
 
@@ -99,7 +91,7 @@ void loop() {
   if ((xDistance != 0) || (yDistance != 0)) {
     Mouse.move(xDistance, yDistance, 0);
   }
-  //se o botao esquerdo é apertado
+  //se o botao esquerdo ? apertado
   if (digitalRead(mouseButton) == LOW) {
     if (variavel2 == 1) {
       delay(DEBOUNCING);
@@ -115,7 +107,7 @@ void loop() {
     }
   }
 
-  // se o botao direito é apertado
+  // se o botao direito ? apertado
   if (digitalRead(rightmouseButton) == LOW) {
     if (variavel3 == 1) {
       delay(DEBOUNCING);
@@ -129,12 +121,12 @@ void loop() {
     variavel3 = 1;
   }
 
-  //se o botao de clique duplo é apertado
+  //se o botao de clique duplo ? apertado
   if (digitalRead(doubleleft) == LOW) {
     if (variavel4 == 1) {
       delay(DEBOUNCING);
       if (digitalRead(doubleleft) == LOW) {
-        // muda o estado lógico do botão
+        // muda o estado l?gico do bot?o
         if (!Mouse.isPressed(MOUSE_LEFT)) {
           Mouse.click(MOUSE_LEFT);
           delay(200);
@@ -147,10 +139,10 @@ void loop() {
   } else {
     variavel4 = 1;
   }
-  //se o botao de clique longo é apertado
+  //se o botao de clique longo ? apertado
   if (digitalRead(leftLong) == LOW) {
     if (digitalRead(leftLong) == LOW && variavel5 == 0) {
-      // muda o estado lógico do botão
+      // muda o estado l?gico do bot?o
       if (variavel == 0) {
         Mouse.press(MOUSE_LEFT);
         Mouse.press(MOUSE_LEFT);
