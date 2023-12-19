@@ -1,4 +1,4 @@
-# Mouse-de-Botao
+![image](https://github.com/CTA-IFRS/Mouse-de-Botao/assets/132298821/7522658a-b403-4850-ae51-6cb5f6c35b87)# Mouse-de-Botao
 
 <img src="https://cta.ifrs.edu.br/wp-content/uploads/sites/3/2021/05/Captura-de-Tela-2021-05-05-a%CC%80s-11.13.56-e1620267197687.png" height="250"> 
 
@@ -12,4 +12,22 @@ Este mouse utiliza uma placa Arduino como controlador e a caixa pode ser confecc
 A comunicação do mouse de botão com o computador é realizada por meio da porta USB, não sendo necessária a instalação de quaisquer softwares para sua utilização.
 
 Para maiores informações e instruções de confecção e uso:
-- [Livro – Conexões Assistivas: Tecnologia Assistiva e Materiais Didáticos Acessíveis](https://drive.google.com/file/d/1_BM6zQywOF1XtAiU45MmOcAh9_2PgRoI/view) (página 38)
+[Livro – Conexões Assistivas: Tecnologia Assistiva e Materiais Didáticos Acessíveis](https://drive.google.com/file/d/1_BM6zQywOF1XtAiU45MmOcAh9_2PgRoI/view) (página 38)
+
+# Outras variações deste recurso estão disponíveis nos seguintes links:
+
+[**Line**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/LineButton)
+
+<img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/LineButton/Mouse-LineButton.jpeg?raw=true" height="250">
+
+[**Joystick**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/JoystickD)
+
+<img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/JoystickD/Mouse-Joystick.jpeg?raw=true" height="250">
+
+[**Joystick Analógico**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/JoystickA)
+
+<img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/JoystickD/Mouse-Joystick.jpeg?raw=true" height="250">
+
+[**Mouse de Rolos**](https://github.com/CTA-IFRS/Mouse-de-rolos)
+
+<img src="https://github.com/CTA-IFRS/Mouse-de-rolos/blob/main/Mouse-Rolos.jpeg?raw=true" height="250">
