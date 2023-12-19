@@ -1,4 +1,4 @@
-![image](https://github.com/CTA-IFRS/Mouse-de-Botao/assets/132298821/7522658a-b403-4850-ae51-6cb5f6c35b87)# Mouse-de-Botao
+# Mouse-de-Botao
 
 <img src="https://cta.ifrs.edu.br/wp-content/uploads/sites/3/2021/05/Captura-de-Tela-2021-05-05-a%CC%80s-11.13.56-e1620267197687.png" height="250"> 
 
