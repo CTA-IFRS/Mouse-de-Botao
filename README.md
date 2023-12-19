@@ -24,7 +24,7 @@ Para maiores informações e instruções de confecção e uso:
 
 <img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/JoystickD/Mouse-Joystick.jpeg?raw=true" height="250">
 
-[**Joystick Analógico**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/JoystickA)
+[**Joystick Analógico**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/JoystickA) // Trocar imagem e Link
 
 <img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/JoystickD/Mouse-Joystick.jpeg?raw=true" height="250">
 
