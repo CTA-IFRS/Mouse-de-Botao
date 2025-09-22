@@ -3,13 +3,66 @@
 
 /*
   ================================================================================
-  Controle Avançado de Mouse e Teclado (v6.2 - Correção Direção Teclado)
+  Controle Avançado de Mouse e Teclado (v6.3 - Versão Final Estável)
   ================================================================================
-  - Corrigida a atribuição dos pinos direcionais para o Modo Teclado.
+
+  Descrição Geral:
+  Este código transforma um Arduino com capacidade USB nativa em um dispositivo
+  híbrido de mouse e teclado, controlado por botões. O dispositivo possui três
+  modos de operação principais: Modo Mouse (padrão), Modo Scroll e Modo Teclado,
+  permitindo diferentes formas de interação com o computador.
+
+  Compatibilidade:
+  - Placas: Funciona em Arduinos com capacidade HID nativa, como Leonardo,
+    Pro Micro e Due.
+  - Bibliotecas: Requer as bibliotecas "Mouse.h" e "Keyboard.h".
+
   --------------------------------------------------------------------------------
+  Hardware e Funções dos Pinos:
+  --------------------------------------------------------------------------------
+  BOTÕES DIRECIONAIS:
+  * Pino 9 (Cima): Move o cursor para CIMA / Rola para CIMA (Modo Scroll) / Tecla SETA PARA CIMA (Modo Teclado).
+  * Pino 8 (Baixo): Move o cursor para BAIXO / Rola para BAIXO (Modo Scroll) / Tecla SETA PARA BAIXO (Modo Teclado).
+  * Pino 15 (Esquerda): Move o cursor para a ESQUERDA / Tecla SETA PARA A ESQUERDA (Modo Teclado).
+  * Pino 10 (Direita): Move o cursor para a DIREITA / Tecla SETA PARA A DIREITA (Modo Teclado).
+
+  BOTÕES DE AÇÃO (MOUSE):
+  * Pino 7: Clique esquerdo do mouse.
+  * Pino 3: Clique direito do mouse.
+  * Pino 2: Clique duplo esquerdo.
+  * Pino 4: Clique esquerdo longo (pressiona e trava; pressione novamente para soltar).
+
+  BOTÕES DE MODO:
+  * Pino 5: Ativa/Desativa o MODO SCROLL.
+  * Pino 6: Ativa/Desativa o MODO TECLADO.
+
+  --------------------------------------------------------------------------------
+  Instruções e Funcionalidades:
+  --------------------------------------------------------------------------------
+  1. Modo Mouse (Padrão):
+     - Controle o cursor com os botões direcionais.
+     - Aceleração: Se um direcional for mantido pressionado por mais de 400ms,
+       a velocidade do cursor aumenta progressivamente.
+     - Use os botões de ação para os diferentes tipos de clique.
+
+  2. Modo Scroll (Ativado pelo Pino 5):
+     - Clique no botão do pino 5 para entrar/sair deste modo.
+     - Enquanto estiver ativo, os botões Cima (Pino 9) e Baixo (Pino 8) controlam
+       a roda de rolagem (scroll wheel) do mouse.
+     - Pressionar qualquer outro botão de ação (cliques, modo teclado) desativa
+       automaticamente o modo scroll.
+
+  3. Modo Teclado (Ativado pelo Pino 6):
+     - Clique no botão do pino 6 para entrar/sair deste modo.
+     - Enquanto estiver ativo, os quatro botões direcionais se transformam nas
+       setas do teclado, permitindo navegar em menus, textos, etc.
+     - Pressionar qualquer outro botão de ação (cliques, modo scroll) desativa
+       automaticamente o modo teclado.
+
+  ================================================================================
 */
 
-// --- Pinos dos botões (DIRECIONAIS CORRIGIDOS) ---
+// --- Pinos dos botões ---
 const int upButton = 9;
 const int downButton = 8;
 const int leftButton = 15;
@@ -31,8 +84,9 @@ const int scrollButton = 5;
 int range = 1;
 int responseDelay = 10;
 boolean variavel = 0, variavel2 = 1, variavel3 = 1, variavel4 = 1, variavel5 = 1;
-int d = 0, a = 0;
-float t = 0.1;
+int d = 0; // Flag que indica se um direcional está pressionado (0 = não, 1 = sim)
+unsigned long a = 0; // Armazena o tempo inicial do pressionamento (usar unsigned long para millis())
+float t = 1.0; // Armazena a velocidade atual do cursor
 
 // --- Variáveis para os modos especiais ---
 bool scrollMode = false;
@@ -119,7 +173,6 @@ void loop() {
 
   // --- Execução das Ações Baseado no Modo Atual ---
   if (scrollMode) {
-    // --- MODO SCROLL ATIVADO ---
     int scrollAmount = 0;
     if (upState) scrollAmount = 1;
     if (downState) scrollAmount = -1;
@@ -129,66 +182,56 @@ void loop() {
     }
 
   } else if (keyboardMode) {
-    // ***** MODO TECLADO ATIVADO *****
     // Seta para Cima
-    if (upState && !upArrowPressed) {
-      Keyboard.press(KEY_UP_ARROW);
-      upArrowPressed = true;
-    } else if (!upState && upArrowPressed) {
-      Keyboard.release(KEY_UP_ARROW);
-      upArrowPressed = false;
-    }
+    if (upState && !upArrowPressed) { Keyboard.press(KEY_UP_ARROW); upArrowPressed = true; }
+    else if (!upState && upArrowPressed) { Keyboard.release(KEY_UP_ARROW); upArrowPressed = false; }
     // Seta para Baixo
-    if (downState && !downArrowPressed) {
-      Keyboard.press(KEY_DOWN_ARROW);
-      downArrowPressed = true;
-    } else if (!downState && downArrowPressed) {
-      Keyboard.release(KEY_DOWN_ARROW);
-      downArrowPressed = false;
-    }
+    if (downState && !downArrowPressed) { Keyboard.press(KEY_DOWN_ARROW); downArrowPressed = true; }
+    else if (!downState && downArrowPressed) { Keyboard.release(KEY_DOWN_ARROW); downArrowPressed = false; }
     // Seta para Esquerda
-    if (leftState && !leftArrowPressed) {
-      Keyboard.press(KEY_LEFT_ARROW);
-      leftArrowPressed = true;
-    } else if (!leftState && leftArrowPressed) {
-      Keyboard.release(KEY_LEFT_ARROW);
-      leftArrowPressed = false;
-    }
+    if (leftState && !leftArrowPressed) { Keyboard.press(KEY_LEFT_ARROW); leftArrowPressed = true; }
+    else if (!leftState && leftArrowPressed) { Keyboard.release(KEY_LEFT_ARROW); leftArrowPressed = false; }
     // Seta para Direita
-    if (rightState && !rightArrowPressed) {
-      Keyboard.press(KEY_RIGHT_ARROW);
-      rightArrowPressed = true;
-    } else if (!rightState && rightArrowPressed) {
-      Keyboard.release(KEY_RIGHT_ARROW);
-      rightArrowPressed = false;
-    }
+    if (rightState && !rightArrowPressed) { Keyboard.press(KEY_RIGHT_ARROW); rightArrowPressed = true; }
+    else if (!rightState && rightArrowPressed) { Keyboard.release(KEY_RIGHT_ARROW); rightArrowPressed = false; }
     
   } else {
     // --- MODO NORMAL (MOUSE) ---
     int xDistance = 0;
     int yDistance = 0;
+    bool anyDirectionalPressed = upState || downState || rightState || leftState;
 
-    // Lógica de aceleração do cursor
-    if (((upState | downState | rightState | leftState) == 1) && d == 0) { a = millis(); d = 1; }
-    if (((upState | downState | rightState | leftState) == 0) && d == 1) { a = 0; d = 0; }
+    // ***** LÓGICA DE ACELERAÇÃO REESTRUTURADA *****
 
-    float currentSpeed;
-    if ((a + TEMPO) < (millis()) && d == 1) {
-      t = t + MULTIPLI;
-      currentSpeed = t;
-    } else {
-      t = range;
-      currentSpeed = range;
+    // 1. Se um direcional ACABOU de ser pressionado
+    if (anyDirectionalPressed && d == 0) {
+      d = 1;          // Ativa a flag de "pressionado"
+      a = millis();   // Grava o tempo inicial
+      t = range;      // Define a velocidade inicial
+    }
+    // 2. Se os direcionais ACABARAM de ser soltos
+    else if (!anyDirectionalPressed && d == 1) {
+      d = 0;          // Desativa a flag
+      a = 0;          // Reseta o tempo
+      t = range;      // Reseta a velocidade
     }
 
-    xDistance = (rightState - leftState) * currentSpeed;
-    yDistance = (downState - upState) * currentSpeed;
-    
-    if ((xDistance != 0) || (yDistance != 0)) {
-      Mouse.move(xDistance, yDistance, 0);
+    // 3. Se um direcional ESTÁ sendo pressionado e o tempo de espera passou
+    if (d == 1 && (millis() - a > TEMPO)) {
+      t += MULTIPLI;  // Aumenta a velocidade (acelera)
     }
 
-    // Ações de clique
+    // Só calcula o movimento se um botão estiver realmente pressionado
+    if (d == 1) {
+      xDistance = (rightState - leftState) * t;
+      yDistance = (downState - upState) * t;
+      
+      if ((xDistance != 0) || (yDistance != 0)) {
+        Mouse.move(xDistance, yDistance, 0);
+      }
+    }
+
+    // --- Ações de clique ---
     if (mouseLeftState) {
       if (variavel2 == 1) {
         delay(DEBOUNCING);
