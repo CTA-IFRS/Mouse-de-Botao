@@ -12,6 +12,24 @@ A comunicação do mouse de botão com o computador é realizada por meio da por
 Para maiores informações e instruções de confecção e uso:
 [Livro – Conexões Assistivas: Tecnologia Assistiva e Materiais Didáticos Acessíveis](https://drive.google.com/file/d/1_BM6zQywOF1XtAiU45MmOcAh9_2PgRoI/view) (página 38)
 
+# Atualização do mouse linha com:
+
+- colmeia para evitar acionamento acidental das teclas;
+- melhoria no sistema de fixação dos switches (todo o suporte é cortado na laser, sem necessidade de peças impressas);
+- melhoria no código (principal mudança foi a substituição da função stickbutton e keyboardmode para as teclas direcionais).
+- código revisado e atualizado.
+
+# Incluídas imagens do processo de montagem:
+
+1. Corte de todas as peças em MDF 3mm;
+2. Colagem das peças em MDF (exceto colméia superior). A colagem pode ser realizada com cola instantânea, cola branca ou cola quente.;
+3. Montagem dos switches (modelo KW11-7-1 2T ou 3T, utilizar terminais NO);
+4. Montagem dos circuitos (arduino>switches);
+5. Corte e gravação das teclas (acrílico 3mm de diversas cores), atentar para as layers/cores do arquivo DXF (branco>corte, azul> corte com velocidade alta e baixa potência (apenas para gerar as ranhuras e vermelho para gravação);
+6. Pintura das teclas (marcador permanete para as teclas em cores claras e tinta acrílica/PVA para as cores escuras);
+7. Montagem da colméia e posicionamento das teclas).
+
+Observações: Atentar para as layers/cores do arquivo DXF das teclas.
 
 # Outras variações deste recurso estão disponíveis nos seguintes links:
 
