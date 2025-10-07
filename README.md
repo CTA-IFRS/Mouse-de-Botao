@@ -6,8 +6,14 @@ Este dispositivo destina-se a pessoas com limitações físico-motoras que possu
 O mouse possui oito acionadores, incorporado ao próprio corpo, sendo quatro para os direcionais e as outras quatro para os botões de ação: clique esquerdo, clique direito, clique duplo (esquerdo) e clique preso (esquerdo). 
 
 Este mouse utiliza uma placa Arduino como controlador e a caixa pode ser confeccionada utilizando impressão 3D ou adquirindo uma caixa com dimensões necessárias para comportar todos os componentes.
-
 A comunicação do mouse de botão com o computador é realizada por meio da porta USB, não sendo necessária a instalação de quaisquer softwares para sua utilização.
+
+**Teclas de função:**
+
+- Ao acionar a função scroll (tecla preta com setas verticais) o mouse entra em modo de rolagem, permitindo utilizar as teclas direcionais cima/baixo em botões de rolagem de página (similar ao rolarmos o botão central de um mouse tradicinal);
+- Ao acionar a função “teclado” (tecla preta com setas nas 4 direções) o mouse entra em modo “teclado” (preciso pensar em um nome melhor para esta função), permitindo utilizar as teclas direcionais para movimentação do cursor quando em modo de edição de texto (avançar, retroceder, subir ou descer o cursor de seleção) ou movimentação da página da mesma forma que utilizamos as teclas direcionais em um teclado convencional.
+
+Em ambos os casos, para retornar a função “normal” do mouse, basta acionar qualquer tecla de ação (qualquer botão colorido, exceto os botões brancos).
 
 Para maiores informações e instruções de confecção e uso:
 [Livro – Conexões Assistivas: Tecnologia Assistiva e Materiais Didáticos Acessíveis](https://drive.google.com/file/d/1_BM6zQywOF1XtAiU45MmOcAh9_2PgRoI/view) (página 38)
