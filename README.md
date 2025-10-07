@@ -1,12 +1,61 @@
 # LineButton
 
-<img src="https://github.com/CTA-IFRS/Mouse-de-Botao/blob/LineButton/Mouse-LineButton.jpeg?raw=true" height="250"> 
+<img src="https://github.com/bruno-egami/Mouse-de-Botao/blob/LineButton/Fotos/IMG_20251007_174429.jpg?raw=true" height="250"> 
 
 Este dispositivo destina-se a pessoas com limitações físico-motoras que possuem alguma dificuldade para utilizar o mouse convencional. 
-O mouse possui oito acionadores, incorporado ao próprio corpo, sendo quatro para os direcionais e as outras quatro para os botões de ação: clique esquerdo, clique direito, clique duplo (esquerdo) e clique preso (esquerdo). 
 
 Este mouse utiliza uma placa Arduino como controlador e a caixa pode ser confeccionada utilizando impressão 3D ou adquirindo uma caixa com dimensões necessárias para comportar todos os componentes.
 A comunicação do mouse de botão com o computador é realizada por meio da porta USB, não sendo necessária a instalação de quaisquer softwares para sua utilização.
+
+O dispositivo possui três modos de operação principais: Modo Mouse (padrão), Modo Scroll e Modo Teclado, permitindo uma ampla gama de interações com o computador.
+
+  Compatibilidade:
+  - Placas: Funciona em Arduinos com capacidade HID nativa, como Leonardo,
+    Pro Micro e Due.
+  - Bibliotecas: Requer as bibliotecas padrão "Mouse.h" e "Keyboard.h".
+
+  --------------------------------------------------------------------------------
+  Hardware e Funções dos Pinos:
+  --------------------------------------------------------------------------------
+  BOTÕES DIRECIONAIS:
+  * Pino 9 (Cima): Move o cursor para CIMA / Rola para CIMA (Modo Scroll) / Tecla SETA PARA CIMA (Modo Teclado).
+  * Pino 8 (Baixo): Move o cursor para BAIXO / Rola para BAIXO (Modo Scroll) / Tecla SETA PARA BAIXO (Modo Teclado).
+  * Pino 15 (Esquerda): Move o cursor para a ESQUERDA / Tecla SETA PARA A ESQUERDA (Modo Teclado).
+  * Pino 10 (Direita): Move o cursor para a DIREITA / Tecla SETA PARA A DIREITA (Modo Teclado).
+
+  BOTÕES DE AÇÃO (MOUSE):
+  * Pino 7: Clique esquerdo do mouse.
+  * Pino 3: Clique direito do mouse.
+  * Pino 2: Clique duplo esquerdo.
+  * Pino 4: Clique esquerdo longo (pressiona e trava; pressione novamente para soltar).
+
+  BOTÕES DE MODO:
+  * Pino 5: Ativa/Desativa o MODO SCROLL.
+  * Pino 6: Ativa/Desativa o MODO TECLADO.
+
+  --------------------------------------------------------------------------------
+  Instruções e Funcionalidades:
+  --------------------------------------------------------------------------------
+  1. Modo Mouse (Padrão):
+     - Controle o cursor com os botões direcionais.
+     - Aceleração: Se um direcional for mantido pressionado por mais de 400ms,
+       a velocidade do cursor aumenta progressivamente.
+     - Use os botões de ação para os diferentes tipos de clique.
+
+  2. Modo Scroll (Ativado pelo Pino 5):
+     - Clique no botão do pino 5 para entrar/sair deste modo.
+     - Enquanto estiver ativo, os botões Cima (Pino 9) e Baixo (Pino 8) controlam
+       a roda de rolagem (scroll wheel) do mouse.
+     - Pressionar qualquer outro botão de ação (cliques, modo teclado) desativa
+       automaticamente o modo scroll.
+
+  3. Modo Teclado (Ativado pelo Pino 6):
+     - Clique no botão do pino 6 para entrar/sair deste modo.
+     - Enquanto estiver ativo, os quatro botões direcionais se transformam nas
+       setas do teclado, permitindo navegar em menus, textos, etc.
+     - Pressionar qualquer outro botão de ação (cliques, modo scroll) desativa
+       automaticamente o modo teclado.
+
 
 **Teclas de função:**
 
