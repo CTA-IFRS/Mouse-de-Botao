@@ -86,6 +86,10 @@ Para maiores informações e instruções de confecção e uso:
 
 Observações: Atentar para as layers/cores do arquivo DXF das teclas.
 
+
+
+
+
 # Outras variações deste recurso estão disponíveis nos seguintes links:
 
 [**Mouse de botão**](https://github.com/CTA-IFRS/Mouse-de-Botao/tree/main)
