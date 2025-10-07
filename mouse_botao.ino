@@ -12,7 +12,7 @@
 
   Compatibilidade:
   - Placas: Funciona em Arduinos com capacidade HID nativa, como Leonardo,
-    Micro, Pro Micro e Due.
+    Pro Micro e Due.
   - Bibliotecas: Requer as bibliotecas padrão "Mouse.h" e "Keyboard.h".
 
   --------------------------------------------------------------------------------
