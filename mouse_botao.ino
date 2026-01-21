@@ -21,20 +21,20 @@
   Hardware e Funções dos Pinos:
   --------------------------------------------------------------------------------
   BOTÕES DIRECIONAIS:
-  * Pino 9 (Cima): Move o cursor para CIMA / Rola para CIMA (Modo Scroll) / Tecla SETA PARA CIMA (Modo Teclado).
-  * Pino 8 (Baixo): Move o cursor para BAIXO / Rola para BAIXO (Modo Scroll) / Tecla SETA PARA BAIXO (Modo Teclado).
-  * Pino 15 (Esquerda): Move o cursor para a ESQUERDA / Tecla SETA PARA A ESQUERDA (Modo Teclado).
-  * Pino 10 (Direita): Move o cursor para a DIREITA / Tecla SETA PARA A DIREITA (Modo Teclado).
+  * Pino 0 (Cima): Move o cursor para CIMA / Rola para CIMA (Modo Scroll) / Tecla SETA PARA CIMA (Modo Teclado).
+  * Pino 1 (Baixo): Move o cursor para BAIXO / Rola para BAIXO (Modo Scroll) / Tecla SETA PARA BAIXO (Modo Teclado).
+  * Pino 2 (Esquerda): Move o cursor para a ESQUERDA / Tecla SETA PARA A ESQUERDA (Modo Teclado).
+  * Pino 3 (Direita): Move o cursor para a DIREITA / Tecla SETA PARA A DIREITA (Modo Teclado).
 
   BOTÕES DE AÇÃO (MOUSE):
-  * Pino 7: Clique esquerdo do mouse.
-  * Pino 3: Clique direito do mouse.
-  * Pino 2: Clique duplo esquerdo.
-  * Pino 4: Clique esquerdo longo (pressiona e trava; pressione novamente para soltar).
+  * Pino 9: Clique esquerdo do mouse.
+  * Pino 8: Clique direito do mouse.
+  * Pino 7: Clique duplo esquerdo.
+  * Pino 6: Clique esquerdo longo (pressiona e trava; pressione novamente para soltar).
 
   BOTÕES DE MODO:
   * Pino 5: Ativa/Desativa o MODO SCROLL.
-  * Pino 6: Ativa/Desativa o MODO TECLADO.
+  * Pino 4: Ativa/Desativa o MODO TECLADO.
 
   --------------------------------------------------------------------------------
   Instruções e Funcionalidades:
@@ -52,7 +52,7 @@
      - Pressionar qualquer outro botão de ação (cliques, modo teclado) desativa
        automaticamente o modo scroll.
 
-  3. Modo Teclado (Ativado pelo Pino 6):
+  3. Modo Teclado (Ativado pelo Pino 4):
      - Clique no botão do pino 6 para entrar/sair deste modo.
      - Enquanto estiver ativo, os quatro botões direcionais se transformam nas
        setas do teclado, permitindo navegar em menus, textos, etc.
@@ -63,17 +63,17 @@
 */
 
 // --- Pinos dos botões ---
-const int upButton = 9;
-const int downButton = 8;
-const int leftButton = 15;
-const int rightButton = 10;
+const int upButton = 0;
+const int downButton = 1;
+const int leftButton = 2;
+const int rightButton = 3;
 // --- Pinos de Ação ---
-const int mouseButton = 7;
-const int rightmouseButton = 3;
-const int leftLong = 4;
-const int doubleleft = 2;
-const int keyboardModeButton = 6;
-const int scrollButton = 5;
+const int mouseButton = 9;
+const int rightmouseButton = 8;
+const int scrollButton = 7;
+const int leftLong = 6;
+const int doubleleft = 5;
+const int keyboardModeButton = 4;
 
 // --- Constantes de configuração ---
 #define DEBOUNCING 50
