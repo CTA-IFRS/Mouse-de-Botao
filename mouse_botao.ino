@@ -3,19 +3,17 @@
 
 /*
   ================================================================================
-  Controle Avançado de Mouse e Teclado (v6.3 - Versão Final Estável)
-  ================================================================================
-
+  
   Descrição Geral:
   Este código transforma um Arduino com capacidade USB nativa em um dispositivo
   híbrido de mouse e teclado, controlado por botões. O dispositivo possui três
   modos de operação principais: Modo Mouse (padrão), Modo Scroll e Modo Teclado,
-  permitindo diferentes formas de interação com o computador.
+  permitindo uma ampla gama de interações com o computador.
 
   Compatibilidade:
   - Placas: Funciona em Arduinos com capacidade HID nativa, como Leonardo,
     Pro Micro e Due.
-  - Bibliotecas: Requer as bibliotecas "Mouse.h" e "Keyboard.h".
+  - Bibliotecas: Requer as bibliotecas padrão "Mouse.h" e "Keyboard.h".
 
   --------------------------------------------------------------------------------
   Hardware e Funções dos Pinos:
@@ -60,6 +58,9 @@
        automaticamente o modo teclado.
 
   ================================================================================
+  Código de exemplo criado originalmente em 15 de mar?o de 2012, por Tom Igoe
+  http://www.arduino.cc/en/Tutorial/ButtonMouseControl
+  
 */
 
 // --- Pinos dos botões ---
